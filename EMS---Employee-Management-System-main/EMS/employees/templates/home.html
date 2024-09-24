@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% block title %}EMS - Home{% endblock %}
+{% block content %}
+
+<!--begin::Row-->
+<div class="row g-5 g-xl-8">
+    <div class="col-xl-4">
+        <!--begin::Statistics Widget 5-->
+        <a href="#" class="card bg-success hoverable card-xl-stretch mb-xl-8">
+            <!--begin::Body-->
+            <div class="card-body">
+                <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
+                <span class="svg-icon svg-icon-light svg-icon-3x ms-n1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="8" y="9" width="3" height="10" rx="1.5" fill="black" />
+                        <rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="black" />
+                        <rect x="18" y="11" width="3" height="8" rx="1.5" fill="black" />
+                        <rect x="3" y="13" width="3" height="6" rx="1.5" fill="black" />
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+                <div class="text-light fw-bolder fs-2 mb-2 mt-5" data-kt-countup="true" data-kt-countup-value="{{total_employee_count}}">0</div>
+                <div class="fw-bold text-light">Total Active Employees</div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Statistics Widget 5-->
+    </div>
+    
+    <div class="col-xl-4">
+        <!--begin::Statistics Widget 5-->
+        <a href="#" class="card bg-primary hoverable card-xl-stretch mb-xl-8">
+            <!--begin::Body-->
+            <div class="card-body">
+                <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
+                <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path opacity="0.3" d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z" fill="black" />
+                        <path d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z" fill="black" />
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+                <div class="text-white fw-bolder fs-2 mb-2 mt-5" data-kt-countup="true" data-kt-countup-value="{{avg_salary}}" data-kt-countup-prefix="৳ ">0</div>
+                <div class="fw-bold text-white">Average Salary</div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Statistics Widget 5-->
+    </div>
+    <div class="col-xl-4">
+        <!--begin::Statistics Widget 5-->
+        <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
+            <!--begin::Body-->
+            <div class="card-body">
+                <!--begin::Svg Icon | path: icons/duotune/graphs/gra007.svg-->
+                <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path opacity="0.3" d="M10.9607 12.9128H18.8607C19.4607 12.9128 19.9607 13.4128 19.8607 14.0128C19.2607 19.0128 14.4607 22.7128 9.26068 21.7128C5.66068 21.0128 2.86071 18.2128 2.16071 14.6128C1.16071 9.31284 4.96069 4.61281 9.86069 4.01281C10.4607 3.91281 10.9607 4.41281 10.9607 5.01281V12.9128Z" fill="black" />
+                        <path d="M12.9607 10.9128V3.01281C12.9607 2.41281 13.4607 1.91281 14.0607 2.01281C16.0607 2.21281 17.8607 3.11284 19.2607 4.61284C20.6607 6.01284 21.5607 7.91285 21.8607 9.81285C21.9607 10.4129 21.4607 10.9128 20.8607 10.9128H12.9607Z" fill="black" />
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+                <div class="text-white fw-bolder fs-2 mb-2 mt-5" data-kt-countup="true" data-kt-countup-value="{{total_distinct_designation}}">0</div>
+                <div class="fw-bold text-white">Total Active Designation</div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Statistics Widget 5-->
+    </div>
+</div>
+<!--end::Row-->
+
+<div class="card mb-5 mb-xxl-8 py-5 ps-3">
+    <h5><i class="fa-solid fa-users text-dark me-3"></i> Employee Details</h5>
+</div>
+
+<div class="row">
+    {% for employee in employees %}
+    <div class="col-lg-6">
+        <div class="card mb-5 mb-xxl-8" style="min-height: 380px;">
+            <div class="card-body pt-9 pb-0">
+                <!--begin::Details-->
+                <div class="d-flex flex-wrap flex-sm-nowrap mb-3">
+                    <!--begin::Info-->
+                    <div class="flex-grow-1">
+                        <!--begin::Title-->
+                        <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                            <!--begin::User-->
+                            <div class="d-flex flex-column">
+                                <!--begin::Name-->
+                                <div class="d-flex align-items-center mb-2">
+                                    <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{employee.name}} <span class="text-gray-700 fs-6">(#{{employee.id}})</span></a>
+                                    <a href="#">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
+                                        <span class="svg-icon svg-icon-1 svg-icon-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M10.0813 3.7242C10.8849 2.16438 13.1151 2.16438 13.9187 3.7242V3.7242C14.4016 4.66147 15.4909 5.1127 16.4951 4.79139V4.79139C18.1663 4.25668 19.7433 5.83365 19.2086 7.50485V7.50485C18.8873 8.50905 19.3385 9.59842 20.2758 10.0813V10.0813C21.8356 10.8849 21.8356 13.1151 20.2758 13.9187V13.9187C19.3385 14.4016 18.8873 15.491 19.2086 16.4951V16.4951C19.7433 18.1663 18.1663 19.7433 16.4951 19.2086V19.2086C15.491 18.8873 14.4016 19.3385 13.9187 20.2758V20.2758C13.1151 21.8356 10.8849 21.8356 10.0813 20.2758V20.2758C9.59842 19.3385 8.50905 18.8873 7.50485 19.2086V19.2086C5.83365 19.7433 4.25668 18.1663 4.79139 16.4951V16.4951C5.1127 15.491 4.66147 14.4016 3.7242 13.9187V13.9187C2.16438 13.1151 2.16438 10.8849 3.7242 10.0813V10.0813C4.66147 9.59842 5.1127 8.50905 4.79139 7.50485V7.50485C4.25668 5.83365 5.83365 4.25668 7.50485 4.79139V4.79139C8.50905 5.1127 9.59842 4.66147 10.0813 3.7242V3.7242Z"
+                                                    fill="#00A3FF" />
+                                                <path class="permanent"
+                                                    d="M14.8563 9.1903C15.0606 8.94984 15.3771 8.9385 15.6175 9.14289C15.858 9.34728 15.8229 9.66433 15.6185 9.9048L11.863 14.6558C11.6554 14.9001 11.2876 14.9258 11.048 14.7128L8.47656 12.4271C8.24068 12.2174 8.21944 11.8563 8.42911 11.6204C8.63877 11.3845 8.99996 11.3633 9.23583 11.5729L11.3706 13.4705L14.8563 9.1903Z"
+                                                    fill="white" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </a>
+                                </div>
+                                <!--end::Name-->
+                                <!--begin::Info-->
+                                <div class="d-flex flex-wrap fw-bold fs-6 mb-4">
+                                    <p href="#"
+                                        class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                        <!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->
+                                        <span class="svg-icon svg-icon-4 me-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.3"
+                                                    d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z"
+                                                    fill="black" />
+                                                <path
+                                                    d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z"
+                                                    fill="black" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                        {{employee.designation}}
+                                    </p>
+                                    <p href="#"
+                                        class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
+                                        <span class="svg-icon svg-icon-4 me-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.3"
+                                                    d="M18.0624 15.3453L13.1624 20.7453C12.5624 21.4453 11.5624 21.4453 10.9624 20.7453L6.06242 15.3453C4.56242 13.6453 3.76242 11.4453 4.06242 8.94534C4.56242 5.34534 7.46242 2.44534 11.0624 2.04534C15.8624 1.54534 19.9624 5.24534 19.9624 9.94534C20.0624 12.0453 19.2624 13.9453 18.0624 15.3453Z"
+                                                    fill="black" />
+                                                <path
+                                                    d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z"
+                                                    fill="black" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                        {{employee.address}}
+                                    </p>
+                                    <p href="#"
+                                        class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
+                                        <span class="svg-icon svg-icon-4 me-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path fill="black" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0h2v2h-2V3zm-7 2h14v16H5V5zm2 14h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zm-4-4h2v-2h-2v2zm4 0h2v-2h-2v2zm-8-4h2v-2H7v2zm4 0h2v-2h-2v2z"/>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                        {{employee.created_at}}
+                                    </p>
+                                    <p href="#"
+                                        class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
+                                        <span class="svg-icon svg-icon-4 me-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path fill="black" d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm-1 19H8v-2h8v2zm0-4H8V6h8v10z"/>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                        {{employee.phone_number}}
+                                    </p>
+                                    
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                            <!--end::User-->
+                        </div>
+                        <!--end::Title-->
+
+
+                        <!--begin::Stats-->
+                        <div class="d-flex flex-wrap flex-stack">
+                            <!--begin::Wrapper-->
+                            <div class="d-flex flex-column flex-grow-1">
+                                <!--begin::Stats-->
+                                <div class="d-flex flex-wrap">
+                                    <!--begin::Stat-->
+                                    <div
+                                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3 w-100">
+                                        <!--begin::Label-->
+                                        <div class="fw-bold fs-6 text-gray-400"> {{ employee.description|slice:":100" }}....</div>
+                                        <a href="#" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#readMoreModal{{employee.id}}">
+                                            Read More
+                                        </a>
+                                        <!--end::Label-->
+                                    </div>
+                                    <!--end::Stat-->
+                                </div>
+                                <!--end::Stats-->
+                            </div>
+                            <!--end::Wrapper-->
+                        </div>
+                        <!--end::Stats-->
+                        <div class="row">
+                            <div class="col-6">
+                                <!--begin::Stats-->
+                                <div class="d-flex flex-wrap flex-stack">
+                                    <!--begin::Wrapper-->
+                                    <div class="d-flex flex-column flex-grow-1">
+                                        <!--begin::Stats-->
+                                        <div class="d-flex flex-wrap">
+                                            <!--begin::Stat-->
+                                            <div class="my-3">
+                                                <!--begin::Number-->
+                                                <div class="d-flex align-items-center">
+                                                    <div class="fs-2 fw-bolder" data-kt-countup="true"
+                                                        data-kt-countup-value="{{employee.salary}}" data-kt-countup-prefix="৳ ">0</div>
+                                                </div>
+                                                <!--end::Number-->
+                                                <!--begin::Label-->
+                                                <div class="fw-bold fs-6 text-gray-400">Salary</div>
+                                                <!--end::Label-->
+                                            </div>
+                                            <!--end::Stat-->
+                                        </div>
+                                        <!--end::Stats-->
+                                    </div>
+                                    <!--end::Wrapper-->
+                                </div>
+                                <!--end::Stats-->
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex flex-wrap flex-stack">
+                                <!--begin::Wrapper-->
+                                <div class="d-flex flex-column flex-grow-1">
+                                    <!--begin::Stats-->
+                                    <div class="d-flex flex-row-reverse">
+                                        <!--begin::Stat-->
+                                        <div class="my-3">
+                                            <a href="{% url 'edit_employee' employee.id %}" type="submit" class="btn btn-sm btn-primary py-5"><i class="fa-regular fa-pen-to-square"></i></a>
+                                            <button class="btn btn-sm btn-danger py-5" onclick="confirmDelete('{{ employee.id }}')">
+                                                <i class="fa-regular fa-trash-can"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Info-->
+            </div>
+            <!--end::Details-->
+        </div>
+    </div>
+</div>
+
+<!--begin::Read More Modal-->
+<div class="modal fade" id="readMoreModal{{employee.id}}" tabindex="-1" aria-labelledby="readMoreModalLabel{{employee.id}}" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="readMoreModalLabel{{employee.id}}">Employee Details: {{employee.name}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{{employee.description}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Read More Modal-->
+
+<script>
+    function confirmDelete(employeeId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/employee/delete_employee/' + employeeId;
+            }
+        })
+    }
+</script>
+
+{% endfor %}
+</div>
+{% endblock %}

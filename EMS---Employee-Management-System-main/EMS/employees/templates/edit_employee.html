@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% block title %}Edit Employee{% endblock %}
+{% block content %}
+
+<!--begin::Basic info-->
+<div class="card mb-5 mb-xl-10">
+    <!--begin::Card header-->
+    <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+        data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+        <!--begin::Card title-->
+        <div class="card-title m-0">
+            <h3 class="fw-bolder m-0 text-dark">Employee Enrollment</h3>
+        </div>
+        <!--end::Card title-->
+    </div>
+    <!--begin::Card header-->
+    <!--begin::Content-->
+    <div id="kt_account_profile_details" class="collapse show">
+        <!--begin::Form-->
+        <form id="kt_account_profile_details_form" class="form" method="post">
+            {% csrf_token %}
+            <!--begin::Card body-->
+            <div class="card-body border-top p-9">
+                <!--begin::Input group-->
+                <div class="row mb-4">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label required fw-bold fs-7">Name</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8">
+                        <!--begin::Row-->
+                        <div class="row">
+                            <!--begin::Col-->
+                            <div class="col-lg-6 fv-row">
+                                <input type="text" name="name"
+                                    class="form-control form-control-sm form-control-solid mb-3 mb-lg-0"
+                                    value="{{employee.name}}" required/>
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-lg-6 fv-row">
+                                <input type="text" name="id" class="form-control form-control-sm form-control-solid bg-secondary"
+                                    value="Employee ID: #{{employee.id}}" disabled required>
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Row-->
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+            
+                <!--begin::Input group-->
+                <div class="row mb-4">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label required fw-bold fs-7">Address</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8 fv-row">
+                        <input type="text" name="company" class="form-control form-control-sm form-control-solid"
+                            placeholder="Enter Address" value="{{employee.address}}" required />
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+                <!--begin::Input group-->
+                <div class="row mb-4">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label fw-bold fs-7">
+                        <span class="required">Contact Phone</span>
+                        <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                            title="Phone number must be active"></i>
+                    </label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8 fv-row">
+                        <input type="number" name="phone" class="form-control form-control-sm form-control-solid"
+                            placeholder="Enter Phone number" value="{{employee.phone_number}}" required />
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+                <!--begin::Input group-->
+                <div class="row mb-4">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label fw-bold fs-7">
+                        <span class="required">Salary</span>
+                    </label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8 fv-row">
+                        <input type="number" name="salary"
+                            class="form-control form-control-sm form-control-solid bg-secondary"
+                            placeholder="Enter Salary" value="{{employee.salary}}" required disabled />
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+                <!--begin::Input group-->
+                <div class="row mb-4">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label fw-bold fs-7">
+                        <span class="required">Designation</span>
+                    </label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8 fv-row">
+                        <select name="designation" aria-label="Select a Designation" data-control="select2"
+                            data-placeholder="Select a Designation..."
+                            class="form-select form-select-solid form-select-sm fw-bold bg-secondary" required disabled>
+                        <option value="">Select a Designation...</option>
+                        <option value="Chief Executive Officer (CEO)" {% if employee.designation == 'Chief Executive Officer (CEO)' %} selected {% endif %}>
+                            Chief Executive Officer (CEO)
+                        </option>
+                        <option value="Chief Technology Officer (CTO)" {% if employee.designation == 'Chief Technology Officer (CTO)' %} selected {% endif %}>
+                            Chief Technology Officer (CTO)
+                        </option>
+                        <option value="Chief Financial Officer (CFO)" {% if employee.designation == 'Chief Financial Officer (CFO)' %} selected {% endif %}>
+                            Chief Financial Officer (CFO)
+                        </option>
+                        <option value="Chief Operating Officer (COO)" {% if employee.designation == 'Chief Operating Officer (COO)' %} selected {% endif %}>
+                            Chief Operating Officer (COO)
+                        </option>
+                        <option value="Vice President of Marketing" {% if employee.designation == 'Vice President of Marketing' %} selected {% endif %}>
+                            Vice President of Marketing
+                        </option>
+                        <option value="Vice President of Sales" {% if employee.designation == 'Vice President of Sales' %} selected {% endif %}>
+                            Vice President of Sales
+                        </option>
+                        <option value="HR Manager" {% if employee.designation == 'HR Manager' %} selected {% endif %}>
+                            HR Manager
+                        </option>
+                        <option value="Product Manager" {% if employee.designation == 'Product Manager' %} selected {% endif %}>
+                            Product Manager
+                        </option>
+                        <option value="Software Engineer" {% if employee.designation == 'Software Engineer' %} selected {% endif %}>
+                            Software Engineer
+                        </option>
+                        <option value="Data Scientist" {% if employee.designation == 'Data Scientist' %} selected {% endif %}>
+                            Data Scientist
+                        </option>
+                        <option value="UI/UX Designer" {% if employee.designation == 'UI/UX Designer' %} selected {% endif %}>
+                            UI/UX Designer
+                        </option>
+                        <option value="QA Engineer" {% if employee.designation == 'QA Engineer' %} selected {% endif %}>
+                            QA Engineer
+                        </option>
+                    </select>
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+                <!--begin::Input group-->
+                <div class="row mb-4">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label required fw-bold fs-7">Short Description</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8 fv-row">
+                        <textarea name="short_description" class="form-control form-control-sm form-control-solid"
+                            placeholder="Enter a Short Description" rows="4"
+                            required>{{employee.description}}</textarea>
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+
+            </div>
+            <!--end::Card body-->
+            <!--begin::Actions-->
+            <div class="card-footer d-flex justify-content-end py-6 px-9">
+                <!-- <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button> -->
+                <a class="btn btn-danger me-2" href="{% url 'home' %}">Cancel</a>
+                <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Update</button>
+            </div>
+            <!--end::Actions-->
+        </form>
+        <!--end::Form-->
+    </div>
+    <!--end::Content-->
+</div>
+
+{% if error %}
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: '{{ error }}',
+        confirmButtonText: 'OK'
+    });
+</script>
+{% endif %}
+
+{% if success %}
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{ success }}',
+        confirmButtonText: 'OK'
+    }).then(() => {
+        // Redirect to the desired URL after "OK" is clicked
+        window.location.href = "{% url 'home' %}";
+    });
+</script>
+{% endif %}
+
+{% endblock %}
